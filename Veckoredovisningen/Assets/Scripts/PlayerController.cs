@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Rigidbody rb;
+    private Rigidbody2D rb2D;
     public float movespeed = 5;
     public PlayerControlInput input;
     private InputAction move;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
         interact = input.Player.Interact;
         interact.Enable();
+        interact.performed += Interact;
 	}
 
     private void OnDisable()
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		rb.velocity = new Vector2 (moveDirection.x * movespeed, moveDirection.y * movespeed);
+		rb2D.velocity = new Vector2 (moveDirection.x * movespeed, moveDirection.y * movespeed);
 	}
 
     private void Interact(InputAction.CallbackContext context)
