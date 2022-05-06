@@ -11,13 +11,17 @@ public class PlayerController : MonoBehaviour
     public PlayerControlInput input;
     private InputAction move;
     private InputAction interact;
+    private SwitchTrigger switchTrigger;
+    private SwitchController switchController;
 
     Vector2 moveDirection = Vector2.zero;
 
 	private void Awake()
 	{
 		input = new PlayerControlInput();
-	}
+        switchTrigger = GameObject.Find("Switch").GetComponent<SwitchTrigger>();
+        switchController = GameObject.Find("Switch").GetComponent<SwitchController>();
+    }
 
 	private void OnEnable()
 	{
@@ -52,6 +56,10 @@ public class PlayerController : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext context)
     {
-        Debug.Log("Interact");
+        if (switchTrigger.isTriggered)
+        {
+            switchController.FlipTheColors();
+            Debug.Log("Interact");
+        }
     }
 }
