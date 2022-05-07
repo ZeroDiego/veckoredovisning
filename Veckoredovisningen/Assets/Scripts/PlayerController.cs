@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     private InputAction move;
     private InputAction interact;
     private SwitchTrigger switchTrigger;
-    private SwitchController switchController;
 
     Vector2 moveDirection = Vector2.zero;
 
@@ -20,7 +19,6 @@ public class PlayerController : MonoBehaviour
 	{
 		input = new PlayerControlInput();
         switchTrigger = GameObject.Find("Switch").GetComponent<SwitchTrigger>();
-        switchController = GameObject.Find("Switch").GetComponent<SwitchController>();
     }
 
 	private void OnEnable()
