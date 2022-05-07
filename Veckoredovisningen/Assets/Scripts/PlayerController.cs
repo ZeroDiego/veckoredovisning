@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private Rigidbody2D rb2D;
     public float movespeed = 5;
     public PlayerControlInput input;
+
+    private Rigidbody2D rb2D;
     private InputAction move;
     private InputAction interact;
     private SwitchTrigger switchTrigger;
@@ -38,14 +38,15 @@ public class PlayerController : MonoBehaviour
         move.Disable();
         interact.Disable();
     }
+
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("White"), LayerMask.NameToLayer("Black"));
         moveDirection = move.ReadValue<Vector2>();
     }
 
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         if (switchTrigger.isTriggered)
         {
-            switchController.FlipTheColors();
+            switchTrigger.switchController.FlipTheColor();
             Debug.Log("Interact");
         }
     }

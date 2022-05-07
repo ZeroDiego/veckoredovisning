@@ -6,7 +6,7 @@ public class SwitchTrigger : MonoBehaviour
 {
     public bool isTriggered;
 
-    private SwitchController switchController;
+    public SwitchController switchController;
 
     private void Awake()
     {

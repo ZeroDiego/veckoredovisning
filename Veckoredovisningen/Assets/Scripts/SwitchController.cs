@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class SwitchController : MonoBehaviour
 {
-    private Door[] doors;
+    private Door door;
 
     private void Awake()
     {
-        doors = FindObjectsOfType<Door>();
+        door = GetComponentInChildren<Door>();
     }
 
-    public void FlipTheColors()
+    public void FlipTheColor()
     {
-        foreach (Door door in doors)
+        door.spr.color = door.nextColor;
+
+        switch (door.spr.color.ToString())
         {
-            switch (door.nextColor.ToString())
-            {
-                case "RGBA(1.000, 1.000, 1.000, 1.000)":
-                    door.spr.color = Color.black;
-                    break;
-                case "RGBA(0.000, 0.000, 0.000, 1.000)":
-                    door.spr.color = Color.white;
-                    break;
-            }
+            case "RGBA(1.000, 1.000, 1.000, 1.000)":
+                door.gameObject.layer = LayerMask.NameToLayer("White");
+                break;
+            case "RGBA(0.000, 0.000, 0.000, 1.000)":
+                door.gameObject.layer = LayerMask.NameToLayer("Black");
+                break;
         }
     }
 }

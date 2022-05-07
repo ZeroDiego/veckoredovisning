@@ -5,7 +5,6 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public Color nextColor;
-
     public SpriteRenderer spr;
 
     private void Awake()
