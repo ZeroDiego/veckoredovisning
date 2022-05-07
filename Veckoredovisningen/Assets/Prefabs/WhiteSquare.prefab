@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6942721672773850839}
   - component: {fileID: 6942721672773850842}
   m_Layer: 6
-  m_Name: White Square
+  m_Name: WhiteSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
