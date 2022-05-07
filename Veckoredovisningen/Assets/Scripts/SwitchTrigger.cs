@@ -17,4 +17,9 @@ public class SwitchTrigger : MonoBehaviour
     {
         isTriggered = true;
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isTriggered = false;
+    }
 }
