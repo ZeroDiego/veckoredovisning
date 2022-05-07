@@ -15,6 +15,8 @@ namespace EventCallbacks
         private InputAction interact;
         private SwitchTrigger switchTrigger;
         public AudioClip interactSound;
+        public AudioClip victorySound;
+        private VictoryController victoryController;
 
         Vector2 moveDirection = Vector2.zero;
 
@@ -23,6 +25,7 @@ namespace EventCallbacks
             input = new PlayerControlInput();
             switchTrigger = GameObject.Find("Switch").GetComponent<SwitchTrigger>();
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("White"), LayerMask.NameToLayer("Black"));
+            victoryController = FindObjectOfType<VictoryController>();
         }
 
         private void OnEnable()
@@ -65,6 +68,13 @@ namespace EventCallbacks
                 EventHandler.Current.FireEvent(soundEvent);
                 switchTrigger.switchController.FlipTheColor();
                 Debug.Log("Interact");
+            }
+
+            if (victoryController.isTriggered)
+            {
+                SoundEvent soundEvent = new SoundEvent(victorySound);
+                EventHandler.Current.FireEvent(soundEvent);
+                Debug.Log("Victory");
             }
         }
     }

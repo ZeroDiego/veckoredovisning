@@ -20,14 +20,4 @@ public class TransisitionTrigger : MonoBehaviour
             smoothCameraTransistion.target = transform.GetComponentInChildren<Transform>();
         }
     }
-
-    /*
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isTriggered = false;
-        }
-    }
-    */
 }
