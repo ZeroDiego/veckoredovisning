@@ -18,19 +18,11 @@ namespace EventCallbacks
 
         Vector2 moveDirection = Vector2.zero;
 
-<<<<<<< Updated upstream
 	private void Awake()
 	{
 		input = new PlayerControlInput();
         switchTrigger = GameObject.Find("Switch").GetComponent<SwitchTrigger>();
     }
-=======
-        private void Awake()
-        {
-            input = new PlayerControlInput();
-            switchTrigger = GameObject.Find("Switch").GetComponent<SwitchTrigger>();
-        }
->>>>>>> Stashed changes
 
         private void OnEnable()
         {
