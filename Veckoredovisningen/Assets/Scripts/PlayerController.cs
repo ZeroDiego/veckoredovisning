@@ -8,23 +8,28 @@ namespace EventCallbacks
     {
         public float movespeed = 5;
         public PlayerControlInput input;
+        public SmoothCameraTransistion camera;
+        public SwitchTrigger[] switchTriggers;
+        public AudioClip interactSound;
+        public AudioClip victorySound;
+        public AudioClip deathSound;
+        public Canvas victoryCanvas;
 
         private Rigidbody2D rb2D;
         private InputAction move;
         private InputAction interact;
         private InputAction reset;
-        private SwitchTrigger switchTrigger;
-        public AudioClip interactSound;
-        public AudioClip victorySound;
         private VictoryController victoryController;
-        public Canvas victoryCanvas;
-
-        Vector2 moveDirection = Vector2.zero;
+        private Vector2 moveDirection = Vector2.zero;
+        private GameObject child;
+        private Transform startPosition;
 
         private void Awake()
         {
+            startPosition = GameObject.Find("StartPosition").transform;
+            startPosition.parent = null;
+            child = GameObject.Find("PlayerChild");
             input = new PlayerControlInput();
-            switchTrigger = GameObject.Find("Switch").GetComponent<SwitchTrigger>();
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("White"), LayerMask.NameToLayer("Black"));
             victoryController = FindObjectOfType<VictoryController>();
         }
@@ -68,12 +73,15 @@ namespace EventCallbacks
 
         private void Interact(InputAction.CallbackContext context)
         {
-            if (switchTrigger.isTriggered)
+            foreach (SwitchTrigger switchTrigger in switchTriggers)
             {
-                SoundEvent soundEvent = new SoundEvent(interactSound);
-                EventHandler.Current.FireEvent(soundEvent);
-                switchTrigger.switchController.FlipTheColor();
-                Debug.Log("Interact");
+                if (switchTrigger.isTriggered)
+                {
+                    SoundEvent soundEvent = new SoundEvent(interactSound);
+                    EventHandler.Current.FireEvent(soundEvent);
+                    switchTrigger.switchController.FlipTheColor();
+                    Debug.Log("Interact");
+                }
             }
 
             if (victoryController.isTriggered)
@@ -84,13 +92,23 @@ namespace EventCallbacks
                 gameObject.SetActive(false);
                 victoryCanvas.gameObject.SetActive(true);
             }
-
         }
 
-		private void ResetScene(InputAction.CallbackContext context)
-		{
+        private void ResetScene(InputAction.CallbackContext context)
+        {
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
-	}
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("White") || collision.gameObject.layer == child.layer)
+            {
+                SoundEvent soundEvent = new SoundEvent(deathSound);
+                EventHandler.Current.FireEvent(soundEvent);
+                transform.position = startPosition.position;
+                StartCoroutine(camera.TeleportCamera());
+            }
+        }
+    }
 }

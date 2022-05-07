@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SmoothCameraTransistion : MonoBehaviour
 {
+    public EventCallbacks.PlayerController playerController;
     public Vector3 offset;
     public float moveSpeed;
 
@@ -44,5 +45,15 @@ public class SmoothCameraTransistion : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, movePosition, moveSpeed * Time.deltaTime);
+    }
+
+    public IEnumerator TeleportCamera()
+    {
+        moveSpeed *= 1000f;
+        playerController.movespeed = 0f;
+        yield return new WaitForSeconds(0.75f);
+        moveSpeed /= 1000f;
+        playerController.movespeed = 5f;
+        yield return null;
     }
 }
