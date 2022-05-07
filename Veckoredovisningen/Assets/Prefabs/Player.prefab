@@ -224,7 +224,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movespeed: 5
-  interactSound: {fileID: 0}
+  interactSound: {fileID: 8300000, guid: 0927233aeb9a9d1408adb33e749cf258, type: 3}
+  victorySound: {fileID: 8300000, guid: 5f3fec697b41872449ca74e5b6a7ab28, type: 3}
+  victoryCanvas: {fileID: 0}
 --- !u!50 &4612114525148548945
 Rigidbody2D:
   serializedVersion: 4
