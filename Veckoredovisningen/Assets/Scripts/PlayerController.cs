@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 	{
 		input = new PlayerControlInput();
         switchTrigger = GameObject.Find("Switch").GetComponent<SwitchTrigger>();
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("White"), LayerMask.NameToLayer("Black"));
     }
 
 	private void OnEnable()
