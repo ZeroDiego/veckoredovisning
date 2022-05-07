@@ -13,4 +13,12 @@ public class TransisitionTrigger : MonoBehaviour
             isTriggered = true;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isTriggered = false;
+        }
+    }
 }

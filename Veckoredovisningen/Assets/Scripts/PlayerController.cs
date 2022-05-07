@@ -18,11 +18,12 @@ namespace EventCallbacks
 
         Vector2 moveDirection = Vector2.zero;
 
-	private void Awake()
-	{
-		input = new PlayerControlInput();
-        switchTrigger = GameObject.Find("Switch").GetComponent<SwitchTrigger>();
-    }
+        private void Awake()
+        {
+            input = new PlayerControlInput();
+            switchTrigger = GameObject.Find("Switch").GetComponent<SwitchTrigger>();
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("White"), LayerMask.NameToLayer("Black"));
+        }
 
         private void OnEnable()
         {
