@@ -13,6 +13,7 @@ public class SmoothCameraTransistion : MonoBehaviour
     private void Awake()
     {
         target = GameObject.Find("TargetPosition").GetComponent<Transform>();
+        target.parent = null;
         tT = GetComponentInChildren<TransisitionTrigger>();
     }
 
