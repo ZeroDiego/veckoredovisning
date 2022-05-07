@@ -7,20 +7,20 @@ public class SmoothCameraTransistion : MonoBehaviour
     public Vector3 offset;
     public float moveSpeed;
 
-    private Transform target;
+    public Transform target;
     private TransisitionTrigger tT;
+    private int index = 0;
 
     private void Awake()
     {
-        target = GameObject.Find("TargetPosition").GetComponent<Transform>();
-        target.parent = null;
-        tT = GetComponentInChildren<TransisitionTrigger>();
+        tT = transform.GetChild(index).GetComponent<TransisitionTrigger>();
     }
 
     private void Update()
     {
         if (tT.isTriggered)
         {
+            Debug.Log(target);
             Transistion();
         }
     }
@@ -28,6 +28,14 @@ public class SmoothCameraTransistion : MonoBehaviour
     public void Transistion()
     {
         Vector3 movePosition = target.position + offset;
-        transform.position = Vector3.MoveTowards(transform.position, movePosition, moveSpeed * Time.deltaTime);
+        if (transform.localPosition.x == movePosition.x)
+        {
+            index++;
+            tT = transform.GetChild(index).GetComponent<TransisitionTrigger>();
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, movePosition, moveSpeed * Time.deltaTime);
+        }
     }
 }
