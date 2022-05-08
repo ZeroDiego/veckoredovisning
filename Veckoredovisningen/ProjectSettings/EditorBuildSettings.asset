@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DiegoScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: c5c2e9e2b562e9046bbc7631293c46ce
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: a845470edb4ec5f46afe9eda812b74cc
   m_configObjects: {}

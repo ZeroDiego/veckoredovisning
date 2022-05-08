@@ -22,6 +22,7 @@ namespace EventCallbacks
         private Vector2 moveDirection = Vector2.zero;
         private GameObject child;
         private Transform startPosition;
+        public string nextLevel;
 
         private void Awake()
         {
@@ -87,8 +88,7 @@ namespace EventCallbacks
 
         private void ResetScene(InputAction.CallbackContext context)
         {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene(nextLevel);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

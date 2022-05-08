@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SmoothCameraTransistion : MonoBehaviour
 {
@@ -52,6 +53,8 @@ public class SmoothCameraTransistion : MonoBehaviour
         moveSpeed *= 1000f;
         playerController.movespeed = 0f;
         yield return new WaitForSeconds(0.75f);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
         moveSpeed /= 1000f;
         playerController.movespeed = 5f;
         yield return null;

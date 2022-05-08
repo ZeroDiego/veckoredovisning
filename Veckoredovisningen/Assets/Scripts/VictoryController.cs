@@ -19,7 +19,7 @@ namespace EventCallbacks
 				SoundEvent soundEvent = new SoundEvent(victorySound);
 				EventHandler.Current.FireEvent(soundEvent);
 				Debug.Log("Victory");
-				FindObjectOfType<PlayerController>().gameObject.SetActive(false);
+				FindObjectOfType<PlayerController>().movespeed = 0;
 				victoryCanvas.gameObject.SetActive(true);
 			}
 		}
