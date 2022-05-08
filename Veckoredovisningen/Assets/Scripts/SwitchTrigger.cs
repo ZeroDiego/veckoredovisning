@@ -13,13 +13,13 @@ public class SwitchTrigger : MonoBehaviour
         switchController = GetComponent<SwitchController>();
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
+	private void OnTriggerStay2D(Collider2D collision)
+	{
         isTriggered = true;
-    }
+	}
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        isTriggered = false;
-    }
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		isTriggered = false;
+	}
 }

@@ -96,7 +96,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -124,4 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdfe72c43b51994aa3d269965de2b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTriggered: 0
+  triggered: 0
+  victorySound: {fileID: 8300000, guid: 5f3fec697b41872449ca74e5b6a7ab28, type: 3}
+  victoryCanvas: {fileID: 0}

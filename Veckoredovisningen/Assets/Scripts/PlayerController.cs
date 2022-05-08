@@ -11,9 +11,8 @@ namespace EventCallbacks
         public SmoothCameraTransistion camera;
         public SwitchTrigger[] switchTriggers;
         public AudioClip interactSound;
-        public AudioClip victorySound;
         public AudioClip deathSound;
-        public Canvas victoryCanvas;
+
 
         private Rigidbody2D rb2D;
         private InputAction move;
@@ -82,15 +81,6 @@ namespace EventCallbacks
                     switchTrigger.switchController.FlipTheColor();
                     Debug.Log("Interact");
                 }
-            }
-
-            if (victoryController.isTriggered)
-            {
-                SoundEvent soundEvent = new SoundEvent(victorySound);
-                EventHandler.Current.FireEvent(soundEvent);
-                Debug.Log("Victory");
-                gameObject.SetActive(false);
-                victoryCanvas.gameObject.SetActive(true);
             }
         }
 
