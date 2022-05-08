@@ -1728,7 +1728,7 @@ GameObject:
   - component: {fileID: 1353160070}
   - component: {fileID: 1353160069}
   m_Layer: 5
-  m_Name: PortalText
+  m_Name: YinYangText (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

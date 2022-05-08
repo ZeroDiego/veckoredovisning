@@ -7,7 +7,7 @@ namespace EventCallbacks
 {
 	public class VictoryController : MonoBehaviour
 	{
-		public int triggered = 0;
+		public static int triggered = 0;
 		public AudioClip victorySound;
 		public Canvas victoryCanvas;
 
