@@ -79,6 +79,7 @@ namespace EventCallbacks
                     SoundEvent soundEvent = new SoundEvent(interactSound);
                     EventHandler.Current.FireEvent(soundEvent);
                     switchTrigger.switchController.FlipTheColor();
+                    StartCoroutine(switchTrigger.Deactivation());
                     Debug.Log("Interact");
                 }
             }

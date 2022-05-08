@@ -8,9 +8,12 @@ public class SwitchTrigger : MonoBehaviour
 
     public SwitchController switchController;
 
+    private Animator animator;
+
     private void Awake()
     {
         switchController = GetComponent<SwitchController>();
+        animator = GetComponent<Animator>();
     }
 
 	private void OnTriggerStay2D(Collider2D collision)
@@ -21,5 +24,13 @@ public class SwitchTrigger : MonoBehaviour
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		isTriggered = false;
-	}
+    }
+
+    public IEnumerator Deactivation()
+    {
+        animator.SetBool("isTriggered", true);
+        yield return new WaitForSeconds(0.75f);
+        animator.SetBool("isTriggered", false);
+        yield return null;
+    }
 }
